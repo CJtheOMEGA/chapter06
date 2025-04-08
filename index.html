@@ -9,7 +9,7 @@
 		body{
 			margin: 1rem;
 			background-color: black;
-			background: url(assets/img/flames.gif);
+			background: url(assets/img/fngame.png);
 			background-repeat: no-repeat;
 			background-position: center;
 			background-size: cover;
@@ -19,7 +19,7 @@
 		}
 		.grid-container{ 
 			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+			grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
 			gap: 2rem;
 			margin: 15% 4rem 0 4rem;
 		}
@@ -27,24 +27,74 @@
 			padding-bottom: 2rem;
 			border-bottom: 2px solid rgb(220, 200, 180);
 		}
+
+		body {
+			transition-property: transform;
+			transition-duration: 3s;
+		}
 	</style>
 	<meta charset="utf-8">
-	<title>Website Template</title>
+	<title> Haiku Project</title>
 	<link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
 	<div class="grid-container">
 		<div> A</div>
-		<div> radiant</div>
-		<div class="last"> young</div>
-		<div> woman</div>
-		<div> to</div>
-		<div> light</div>
-		<div> the</div>
-		<div class="last"> darkest</div>
-		<div> corners</div>
-		<div> of</div>
-		<div class="last"> winter</div>
+		<div> new</div>
+		<div> game</div>
+		<div> to </div>
+		<div class="last"> play </div>
+		<div> New </div>
+		<div> heroes </div>
+		<div> and </div>
+		<div> new </div>
+		<div class="last"> villains </div>
+		<div> A </div>
+		<div> fun </div>
+		<div> time </div>
+		<div> for</div>
+		<div class="last"> all </div>
 	</div>
+
+	<script>
+		function randomNumber(min, max){
+			return (Math.random() * (max-min)) + min;
+		}
+
+		//define divs variable
+
+		let divs = document.querySelectorAll(".grid-container div");
+
+		function randomize() {
+		// apply only to each div tag
+
+		divs.forEach(function(div) {
+			let scale = randomNumber(.5, 1.2);
+			let translateX = randomNumber(0, 50);
+			let translateY = randomNumber(0, 20);
+			let rotate = randomNumber(0, 360);
+
+			//half of time do this 
+
+			if (Math.random() > .5){
+				scale = 1; 
+				translateX = randomNumber(0, 80);
+				translateY = randomNumber(0, 80);
+			}
+			div.style.transform = `scale(${scale}) translate(${translateX}%, ${translateY}%) rotate(${rotate}deg)`;
+		});}
+
+		document.addEventListener("click", randomize);
+
+		//document.body.style.transform = `rotate(90deg)`;
+
+		//let rotation = 0; 
+		//document.addEventListener("click", function(){
+			//let min = 10;
+			//let max = 40;
+			//rotation += Math.random() * (max - min) + min;
+			//document.body.style.transform = `rotate(${rotation}deg)`;
+		//});
+	</script>
 </body>
 </html>
